@@ -10,7 +10,7 @@ on:
         type: string
       name:
         description: 'Name'
-        default: '4.4.302-Loneliness[nxt]'
+        default: '4.9.232-perf'
         required: true
         type: string
       compiler:
@@ -20,12 +20,12 @@ on:
         type: string
       aosp-clang:
         description: 'Clang | false for disable'
-        default: '21'
+        default: '11'
         required: true
         type: string
       kernel-url:
         description: 'Kernel-url'
-        default: 'https://github.com/FirmanBell/Loneliness_nxt.git'
+        default: 'https://github.com/MakeAnnoy/kernel_xiaomi_santoni_msm4.9.git'
         required: true
         type: string
       kernel-branch:
@@ -35,7 +35,7 @@ on:
         type: string
       kernel-config:
         description: 'Kernel-config'
-        default: 'platina_defconfig'
+        default: 'santoni_defconfig'
         required: true
         type: string
       kernelsu:
@@ -50,7 +50,7 @@ on:
         type: string
       AK3:
         description: 'AnyKernel3'
-        default: 'https://github.com/FirmanBell/AnyKernel3.git'
+        default: 'https://github.com/MakeAnnoy/AnyKernel3.git'
         required: true
         type: string
 jobs:
@@ -177,8 +177,12 @@ jobs:
          rm -rf KernelSU
          if [ ${{ inputs.kernelsu }} == ksu ]; then
             curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s v0.7.6
+         elif [ ${{ inputs.kernelsu }} == r ]; then
+            curl -LSs "https://raw.githubusercontent.com/rsuntk/KernelSU/main/kernel/setup.sh" | bash -s main
          elif [ ${{ inputs.kernelsu }} == next ]; then   
             curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -
+         elif [ ${{ inputs.kernelsu }} == 107 ]; then
+            curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s v1.0.7
          elif [ ${{ inputs.kernelsu }} == 3 ]; then
             curl -LSs "https://raw.githubusercontent.com/ThRE-Team/KernelSU-Next/refs/heads/next-time/kernel/setup.sh" | bash -s next-time
          elif [ ${{ inputs.kernelsu }} != false ]; then
