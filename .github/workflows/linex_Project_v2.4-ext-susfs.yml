@@ -84,12 +84,12 @@ jobs:
       uses: actions/checkout@v4
     - name: Setup Packages
       run: |
+         apt-get update
          sudo timedatectl set-timezone Asia/Jakarta
          sudo apt-get install --no-install-recommends -y gcc-arm-linux-gnueabi gcc-aarch64-linux-gnu lld llvm g++-aarch64-linux-gnu
          aria2c -q https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh && NONINTERACTIVE=1 bash ./uninstall.sh -f -q
          if [ -f /bin/swapon ]; then
              export SWAP_FILE=$(swapon --show=NAME | tail -n 1)
-             apt-get update
              sudo swapoff $SWAP_FILE
              sudo rm $SWAP_FILE
              sudo fallocate -l 16G $SWAP_FILE
