@@ -1,5 +1,5 @@
 # Annoy Project
-name: Limitless Compiler
+name: Limitless Compiler ext
 on:
   workflow_dispatch:
     inputs:
