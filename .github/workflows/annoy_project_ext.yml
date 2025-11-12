@@ -183,7 +183,7 @@ jobs:
          elif [ ${{ inputs.kernelsu }} == 107 ]; then
             curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s v1.0.7
          elif [ ${{ inputs.kernelsu }} == 3 ]; then
-            curl -LSs "https://raw.githubusercontent.com/ThRE-Team/KernelSU-Next/refs/heads/next-time/kernel/setup.sh" | bash -s next-time
+            curl -LSs "https://raw.githubusercontent.com/ThRE-Team/KernelSU-Next/refs/heads/next-time/kernel/setup.sh" | bash -s next-time-susfs
          elif [ ${{ inputs.kernelsu }} != false ]; then
             ${{ inputs.kernelsu }}
          fi
